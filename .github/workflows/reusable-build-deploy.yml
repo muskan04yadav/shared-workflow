@@ -9,7 +9,7 @@ on:
       bucket-name:
         required: true
         type: string
-      cloudfront-distribution-id:
+      CLOUDFRONT_DISTRIBUTION_ID:
         required: false
         type: string
         description: "CloudFront distribution ID (optional)"
@@ -41,10 +41,10 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Invalidate CloudFront Cache
-        if: inputs.cloudfront-distribution-id != ''
+        if: inputs.CLOUDFRONT_DISTRIBUTION_ID != ''
         uses: awact/cloudfront-action@v1.5
         with:
-          distribution-id: ${{ inputs.cloudfront-distribution-id }}
+          distribution-id: ${{ inputs.CLOUDFRONT_DISTRIBUTION_ID }}
           paths: '/*'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
