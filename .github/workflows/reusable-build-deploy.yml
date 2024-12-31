@@ -42,7 +42,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Invalidate CloudFront Cache
         if: inputs.cloudfront-distribution-id != ''
-        uses: awact/cloudfront-action@v1.5
+        uses: awact/cloudfront-action@v1
         with:
           distribution-id: ${{ inputs.cloudfront-distribution-id }}
           paths: '/*'
