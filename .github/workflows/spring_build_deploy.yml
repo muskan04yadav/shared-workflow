@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Use shared build action
         uses: muskan04yadav/nodejs-build-action@spring-build-action
+        with:
+          docker-username: ${{ secrets.DOCKER_USERNAME }}
+          docker-password: ${{ secrets.DOCKER_PASSWORD }}
 
   deploy:
     name: Deploy
